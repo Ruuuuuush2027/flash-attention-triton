@@ -28,8 +28,10 @@ If you need to reduce, you write:
     row_max = tl.max(x, axis=0)
     row_sum = tl.sum(x, axis=0)
 
-So we only need to define: warps (*32 num threads per block) and grid (num blocks, how blocks allocated),
-and writing code for block level tl.load will auto distribute the tasks across warps.
+So we only need to define: grid (num blocks, how blocks allocated) and block_size,
+optionally we can decide warps (or 32 * num threads for each block) instead of letting 
+triton handle for us and writing code for block level tl.load will auto distribute 
+the tasks across warps.
 """
 
 import torch
